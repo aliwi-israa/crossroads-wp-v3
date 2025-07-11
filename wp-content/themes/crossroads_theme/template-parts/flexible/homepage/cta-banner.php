@@ -1,10 +1,6 @@
 <?php 
 $heading = get_sub_field('heading');
-$btn_text = get_sub_field('button_text');
-$is_external = get_sub_field('is_external_link');
-$internal_link = get_sub_field('button_link');
-$external_link = get_sub_field('external_link');
-$final_link = $is_external ? $external_link : $internal_link;
+$page_link = get_sub_field('page_link');
 ?>
 <section class="bg-color text-light pt-40 pb-40">
 <div class="container">
@@ -15,10 +11,12 @@ $final_link = $is_external ? $external_link : $internal_link;
         <?php endif; ?>
     </div>
     <div class="col-lg-3 text-lg-end">
-        <?php if ($btn_text && $final_link) : ?>
-        <a class="btn-main btn-line fx-slide" href="<?php echo esc_url($final_link); ?>" <?php echo $is_external ? 'target="_blank" rel="noopener"' : ''; ?>>
-            <span><?php echo esc_html($btn_text); ?></span>
-        </a>
+        <?php if ($page_link) : ?>
+            <a class="btn-main btn-line fx-slide"
+            href="<?php echo esc_url($page_link['url']); ?>" 
+            <?php echo $page_link['target'] ? 'target="' . esc_attr($page_link['target']) . '" rel="noopener"' : ''; ?>>
+            <span><?php echo esc_html($page_link['title']); ?></span>
+            </a>
         <?php endif; ?>
     </div>
     </div>

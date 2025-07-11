@@ -26,7 +26,7 @@ $phone        = get_field('ClinicPhoneNumber', 'option');
     <div id="top"></div>
     <div class="entry-content">
         <?php get_template_part('partials/hero-archive'); ?>
-        <?php get_template_part('partials/breadcrumbs'); ?>
+         <!-- get_template_part('partials/breadcrumbs');  -->
         <section>
           <div class="container mt-6">
             <div class="row  <?php echo ($image_direction === 'isImgRight') ? 'content-block-right' : 'content-block-left'; ?>">

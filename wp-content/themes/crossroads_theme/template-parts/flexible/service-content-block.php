@@ -109,6 +109,7 @@ if ($terms && !is_wp_error($terms)) {
       <?php else: // Layout for multiple videos ?>
           <div class="educational-video single mb-4">
               <h3><?php echo $display_video_section_title; ?></h3>
+                    <div class="video-container">
                   <?php foreach ($service_videos_rows as $video_row): ?>
                       <?php
                       $video_popover_embed = $video_row['video_embed']; // Corrected sub-field name
@@ -120,6 +121,7 @@ if ($terms && !is_wp_error($terms)) {
                           </div>
                       <?php endif; ?>
                   <?php endforeach; ?>
+                      </div>
           </div>
       <?php endif; ?>
     <?php endif; ?>

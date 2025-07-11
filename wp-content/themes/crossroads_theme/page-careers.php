@@ -7,7 +7,7 @@ get_header();
 <main id="primary" class="site-main">
 
     <?php get_template_part('partials/hero-archive'); ?>
-    <?php get_template_part('partials/breadcrumbs'); ?>
+     <!-- get_template_part('partials/breadcrumbs');  -->
     <section>
         <div class="page-content">
             <div class="section page-content-first">

@@ -11,6 +11,8 @@ $benefits_repeater    = get_field('benefits');
     <p><?php echo esc_html($careers_description); ?></p>
   <?php endif; ?>
 </div>
+<section>
+
   <?php if ($careers_title): ?>
 <div class="container aos-init aos-animate text-center" data-aos="fade-up">
     <h2 class="wow fadeInUp"><?php echo esc_html($careers_title); ?></h2>
@@ -22,7 +24,9 @@ $benefits_repeater    = get_field('benefits');
 </div>
 </div>
   <?php endif; ?>
+</section>
 
+<section>
 <div class="text-center mb-2 mb-md-3 mb-lg-4">
   <?php if ($benefits_title): ?>
     <h2 class="wow fadeInUp"><?php echo esc_html($benefits_title); ?></h2>
@@ -49,6 +53,7 @@ $benefits_repeater    = get_field('benefits');
     <?php endforeach; ?>
   <?php endif; ?>
 </div>
+</section>
   <script>
   jQuery(document).ready(function ($) {
     const jobBoardName = 'crossroads-dental';

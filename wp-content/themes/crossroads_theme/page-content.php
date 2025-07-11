@@ -8,7 +8,7 @@ get_header();
   <div class="no-bottom no-top" id="content">
         <div id="top"></div>
         <?php get_template_part('partials/hero-archive'); ?>
-        <?php get_template_part('partials/breadcrumbs'); ?>
+         <!-- get_template_part('partials/breadcrumbs');  -->
 
         <section>
         <div class="page-content">

@@ -9,7 +9,7 @@ $show_features = get_sub_field('show_features');
 $image = get_sub_field('image');
 $image_direction = get_sub_field('image_direction');
 ?>
-<section>
+<section class="HP-section">
     <div class="container">
         <div
             class="row g-4 gx-5 align-items-center <?php echo ($image_direction === 'isImgRight') ? 'content-block-right' : 'content-block-left'; ?>">

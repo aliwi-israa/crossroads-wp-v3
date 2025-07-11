@@ -2887,15 +2887,31 @@ body {
     margin: 0 !important;
 }
 .wp-block-columns {
-    gap: 0;
+    gap: 60px;
 
-}
-.wp-block-column  {
-     padding-right: 24px;
-    padding-left: 24px;
 }
 .wp-block-list li a strong{
 color: var(--secondary-color);
+}
+.HP-section .ul-check {
+  margin-left: 0;
+}
+.wp-block-column {
+  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.services-nav a.active {
+  background-color: rgb(74 124 210 / .1) !important;
+  color: #6fbcb2 !important;
+
+}
+
+.services-nav a.nav-link.parent-category.active-parent.active {
+  background-color: white !important;
+  color: #6fbcb2 !important;
+
 }
 @-webkit-keyframes move-up-down {
   0% {

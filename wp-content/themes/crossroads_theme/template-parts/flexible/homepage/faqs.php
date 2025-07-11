@@ -17,19 +17,40 @@ $faqs = get_sub_field('faqs'); // Post Object field (multiple select)
 
                         <?php 
                         $count = 0;
-                        foreach ($faqs as $faq_post) :
+                        global $post; // Declare the global $post variable
+
+                        // Store the original global $post object to restore it later
+                        $original_post = $post; 
+
+                        foreach ($faqs as $faq_post_object) : // Renamed loop variable for clarity (avoiding $faq_post if it's not the actual $post)
                             if ($count >= 5) break;
                             $count++;
-                            $question = get_the_title($faq_post->ID);
-                            $answer = get_field('answer', $faq_post->ID); // Assuming you have an ACF field called 'answer'
+                            
+                            // Set the global $post object to the current FAQ post
+                            $post = $faq_post_object;
+                            
+                            // Setup postdata for the current FAQ post
+                            setup_postdata($post);
                         ?>
                             <div class="accordion-section-title" data-tab="#accordion-<?php echo $count; ?>">
-                                <?php echo esc_html($question); ?>
+                                <?php 
+                                // get_the_title() is fine, but the_title() is also available after setup_postdata()
+                                the_title(); 
+                                ?>
                             </div>
                             <div class="accordion-section-content" id="accordion-<?php echo $count; ?>">
-                                <?php echo wp_kses_post($answer); ?>
+                                <?php 
+                                // This will now correctly display the main content of the current FAQ post
+                                the_content(); 
+                                ?>
                             </div>
                         <?php endforeach; ?>
+                        
+                        <?php 
+                        // IMPORTANT: Restore the original global $post object after the loop
+                        $post = $original_post;
+                        wp_reset_postdata(); 
+                        ?>
 
                     </div>
                 </div>
