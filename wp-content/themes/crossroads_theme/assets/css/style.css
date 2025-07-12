@@ -90,8 +90,8 @@
   background-color: var(--bg-dark-1) !important
 }
 
-.id-color {
-  color: var(--primary-color)
+.id-color, .service-template-default h2.wp-block-heading {
+  color: var(--primary-color);
 }
 
 .rounded-1 {
@@ -2122,7 +2122,8 @@ footer .widget h5 {
   border-color: rgba(255, 255, 255, .5);
 }
 
-.text-light .subtitle:not(.id-color) {
+.text-light .subtitle:not(.id-color), 
+.text-light .subtitle:not(.service-template-default h2.wp-block-heading) {
   color: #ffffff;
 }
 
@@ -2748,7 +2749,8 @@ span.service-item, ul.checked li {
     padding-left: 0;
 }
 
-ul.checked li::before, .page-template-default main ul.wp-block-list li::before  {
+ul.checked li::before, .page-template-default main ul.wp-block-list li::before,
+  ul:not(header ul):not(footer ul):not(.sidebar ul)  li::before{
     content: "\f00c"; 
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -2756,13 +2758,13 @@ ul.checked li::before, .page-template-default main ul.wp-block-list li::before  
     margin-right: 8px;
 }
 
-.page-template-default main ul li {
+.page-template-default main ul li, ul:not(header ul):not(footer ul):not(.sidebar ul) li {
   list-style: none;
 
 }
-.page-template-default main ul { 
-margin-left: 0;
-    padding-left: 10px;
+.page-template-default main ul, ul:not(header ul):not(footer ul):not(.sidebar ul)  { 
+  margin-left: 0;
+  padding-left: 10px;
 }
 header.header-mobile #mainmenu > li > span,
 header.header-mobile #mainmenu li > ul > li > span {
@@ -2870,11 +2872,11 @@ a.text-blue:visited {
   flex-direction: row;
 }
 .office-hours-block p{
-    margin-bottom:0;
+  margin-bottom:0;
 }
 header .menu-item {
   margin-bottom: 0 !important;
-    line-height: 30.4px !important;
+  line-height: 30.4px !important;
 }
 html {
   margin: 0 !important;
@@ -2883,24 +2885,24 @@ body {
   height:100%!important;
 }
 .pattern-wrapper-no-padding {
-    padding: 0 !important; 
-    margin: 0 !important;
+  padding: 0 !important; 
+  margin: 0 !important;
 }
 .wp-block-columns {
-    gap: 60px;
+  gap: 60px;
 
 }
 .wp-block-list li a strong{
-color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 .HP-section .ul-check {
   margin-left: 0;
 }
 .wp-block-column {
   justify-content: center;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 .services-nav a.active {
   background-color: rgb(74 124 210 / .1) !important;
@@ -2911,7 +2913,6 @@ color: var(--secondary-color);
 .services-nav a.nav-link.parent-category.active-parent.active {
   background-color: white !important;
   color: #6fbcb2 !important;
-
 }
 @-webkit-keyframes move-up-down {
   0% {

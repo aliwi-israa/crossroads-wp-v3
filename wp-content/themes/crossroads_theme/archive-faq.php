@@ -43,12 +43,21 @@
             $faqs = new WP_Query([
               'post_type'      => 'faq',
               'posts_per_page' => -1,
-              'meta_query'     => [[
-                'key'     => 'service',
-                'value'   => $service->ID,
-                'compare' => '=',
-              ]]
+              'meta_query'     => [
+                'relation' => 'OR',
+                [
+                  'key'     => 'service',
+                  'value'   => '"' . $service->ID . '"',
+                  'compare' => 'LIKE',
+                ],
+                [
+                  'key'     => 'service',
+                  'value'   => $service->ID,
+                  'compare' => '=',
+                ]
+              ]
             ]);
+
             if (!$faqs->have_posts()) continue;
           ?>
 

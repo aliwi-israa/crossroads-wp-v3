@@ -1,8 +1,8 @@
 <?php
 
-$contact_title       = get_field('title');
 $contact_subtitle    = get_field('subtitle');
-$contact_description = get_field('description');
+$raw_content = get_the_content();
+$contact_description = apply_filters( 'the_content', $raw_content );
 $contact_form_embed  = get_field('form');
 ?>
    <section>
@@ -14,12 +14,8 @@ $contact_form_embed  = get_field('form');
                     <div class="subtitle"><?php echo esc_html($contact_subtitle); ?></div>
                     <?php endif; ?>
 
-                    <?php if ($contact_title): ?>
-                    <h2 class="wow fadeInUp"><?php echo esc_html($contact_title); ?></h2>
-                    <?php endif; ?>
-
                     <?php if ($contact_description): ?>
-                    <p><?php echo esc_html($contact_description); ?></p>
+                    <p><?php echo $contact_description; ?></p>
                     <?php endif; ?>
 
                     <div class="row g-4 gx-5">

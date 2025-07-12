@@ -11,24 +11,26 @@ $services_description = get_field('services_description', 'option');
         <!--  get_template_part('partials/breadcrumbs'); -->
 
         <?php if ($services_title || $services_description): ?>
-        <div class="container">
-            <div class="text-center mb-2 mb-md-3 mb-lg-4">
-            <?php if ($services_title): ?>
-                <h2><?php echo esc_html($services_title); ?></h2>
-            <?php endif; ?>
+            <section class="pb-5 intro-section">
+                <div class="container">
+                    <div class="text-center mb-2 mb-md-3 mb-lg-4">
+                    <?php if ($services_title): ?>
+                        <h2><?php echo esc_html($services_title); ?></h2>
+                    <?php endif; ?>
 
-            <div class="h-decor"></div>
+                    <div class="h-decor"></div>
 
-            <?php if ($services_description): ?>
-                <div class="text-center mt-4">
-                <p><?php echo nl2br(esc_html($services_description)); ?></p>
+                    <?php if ($services_description): ?>
+                        <div class="text-center mt-4">
+                        <p><?php echo nl2br(esc_html($services_description)); ?></p>
+                        </div>
+                    <?php endif; ?>
+                    </div>
                 </div>
-            <?php endif; ?>
-            </div>
-        </div>
+            </section>
         <?php endif; ?>
 
-        <section>
+        <section class="jobs-section">
         <div class="container">
             <div class="row justify-content-center prices-carousel js-prices-carousel mt-2" style="row-gap:35px;">
 

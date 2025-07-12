@@ -2,23 +2,18 @@
 
 <?php
 // ACF fields
-$display_name = get_the_title();
-$job_title    = get_field('job_title');
-$bio          = get_field('bio');
-$image_field = get_field('image');
-$image_url = '';
-$image_direction = get_field('image_direction') ?: 'isImgRight';
-if (is_array($image_field) && isset($image_field['url'])) {
-    $image_url = $image_field['url'];
-} elseif (is_numeric($image_field)) {
-    $image_url = wp_get_attachment_image_url($image_field, 'large');
-} else {
-    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-}
-// Clinic Settings (from ACF Options Page)
 $clinic_name  = get_field('ClinicName', 'option');
 $booking_link = get_field('ClinicBookingLink', 'option');
 $phone        = get_field('ClinicPhoneNumber', 'option');
+$display_name = get_the_title();
+$job_title    = get_field('job_title');
+$bio          = get_the_content();
+$image_direction = get_field('image_direction') ?: 'isImgRight';
+$feat_image_url = ''; 
+
+if ( has_post_thumbnail( $post->ID ) ) {
+    $feat_image_url = get_the_post_thumbnail_url( $post->ID, 'full' );
+}
 ?>
 
 <div id="wrapper">
@@ -26,14 +21,13 @@ $phone        = get_field('ClinicPhoneNumber', 'option');
     <div id="top"></div>
     <div class="entry-content">
         <?php get_template_part('partials/hero-archive'); ?>
-         <!-- get_template_part('partials/breadcrumbs');  -->
         <section>
           <div class="container mt-6">
             <div class="row  <?php echo ($image_direction === 'isImgRight') ? 'content-block-right' : 'content-block-left'; ?>">
               <div class="col-md">
                 <div class="rounded-1 overflow-hidden wow zoomIn image-container animated" style="background-size: cover; background-repeat: no-repeat; visibility: visible; animation-name: zoomIn;">
-                  <?php if ($image_url): ?>
-                    <img src="<?php echo esc_url($image_url); ?>" class="img-fluid" alt="<?php echo esc_attr($display_name); ?>">
+                  <?php if ($feat_image_url): ?>
+                    <img src="<?php echo esc_url($feat_image_url); ?>" class="img-fluid" alt="<?php echo esc_attr($display_name); ?>">
                   <?php endif; ?>
                 </div>
 

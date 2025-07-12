@@ -930,10 +930,19 @@
         display: none !important;
     }
 
-    section {
+    section, .section.wp-block-group {
         padding: 40px 0;
     }
 
+    .intro-section  {
+        padding-bottom: 0 !important;
+    }
+    .jobs-section {
+        padding-top:0 !important;
+    }
+    .wp-block-buttons {
+    justify-content: center;
+    }
     #subheader {
         padding-top: 100px;
     }
@@ -1337,6 +1346,7 @@
     }
     #all-jobs ul {
         padding-left: 0;
+        margin-left: 0;
     }
     #all-jobs ul li {
         padding: 15px;
