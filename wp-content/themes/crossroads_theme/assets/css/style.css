@@ -2750,7 +2750,7 @@ span.service-item, ul.checked li {
 }
 
 ul.checked li::before, .page-template-default main ul.wp-block-list li::before,
-  .main-content ul:not(header ul):not(footer ul):not(.sidebar ul)  li::before{
+  .main-content ul:not(header ul):not(footer ul):not(.sidebar ul):not(ul.services-icon-list)  li::before{
     content: "\f00c"; 
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -2758,11 +2758,11 @@ ul.checked li::before, .page-template-default main ul.wp-block-list li::before,
     margin-right: 8px;
 }
 
-.page-template-default main ul li, .main-content ul:not(header ul):not(footer ul):not(.sidebar ul) li {
+.page-template-default main ul li, .main-content ul:not(header ul):not(footer ul):not(.sidebar ul):not(ul.services-icon-list) li {
   list-style: none;
 
 }
-.page-template-default main ul, .main-content ul:not(header ul):not(footer ul):not(.sidebar ul)  { 
+.page-template-default main ul, .main-content ul:not(header ul):not(footer ul):not(.sidebar ul):not(ul.services-icon-list)  { 
   margin-left: 0;
   padding-left: 10px;
 }

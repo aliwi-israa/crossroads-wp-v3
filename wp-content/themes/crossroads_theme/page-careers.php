@@ -8,7 +8,6 @@ get_header();
 
     <?php get_template_part('partials/hero-archive'); ?>
      <!-- get_template_part('partials/breadcrumbs');  -->
-    <section>
         <div class="page-content">
             <div class="section page-content-first">
                 <div class="container">
@@ -16,7 +15,6 @@ get_header();
                 </div>
             </div>
         </div>
-    </section>
 
 </main><!-- #main -->
 

@@ -194,25 +194,37 @@ add_action( 'wp_enqueue_scripts', 'crossroads_enqueue_google_fonts' );
 /**
  * Add fonts.
  */
-function crossroads_add_editor_styles() {
-    add_theme_support( 'editor-styles' );
-    // Enqueue Urbanist for the editor
-    wp_enqueue_style(
-        'google-font-urbanist-editor',
-        'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap',
-        array(),
-        null
-    );
+// function crossroads_add_editor_styles() {
+//     add_theme_support( 'editor-styles' );
+//     // Enqueue Urbanist for the editor
+//     wp_enqueue_style(
+//         'google-font-urbanist-editor',
+//         'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap',
+//         array(),
+//         null
+//     );
 
-    // Enqueue Inter for the editor
-    wp_enqueue_style(
-        'google-font-inter-editor',
-        'https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap',
-        array(),
-        null
-    );
+//     // Enqueue Inter for the editor
+//     wp_enqueue_style(
+//         'google-font-inter-editor',
+//         'https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap',
+//         array(),
+//         null
+//     );
+// }
+// add_action( 'after_setup_theme', 'crossroads_add_editor_styles' );
+function crossroads_add_editor_styles() {
+    // Check if we are in the admin area and if the current screen is relevant
+    // (e.g., for post/page editing screens).
+    // This check can be more specific if needed, e.g., get_current_screen()->base === 'post'
+    if (is_admin()) {
+        wp_enqueue_style('google-font-urbanist-editor', 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap', [], null);
+        wp_enqueue_style('google-font-inter-editor', 'https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap', [], null);
+    }
 }
-add_action( 'after_setup_theme', 'crossroads_add_editor_styles' );
+// Change the hook from 'after_setup_theme' to 'admin_enqueue_scripts'
+add_action('admin_enqueue_scripts', 'crossroads_add_editor_styles');
+
 
 function crossroads_enqueue_block_editor_assets() {
     wp_enqueue_style(
@@ -270,15 +282,28 @@ add_action('wp_enqueue_scripts', 'crossroads_enqueue_fontawesome');
 /**
  * Config
  */
-if (function_exists('acf_add_options_page')) {
-  acf_add_options_page([
-    'page_title' => 'Website Settings',
-    'menu_title' => 'Website Settings',
-    'menu_slug'  => 'site-settings',
-    'capability' => 'edit_posts',
-    'redirect'   => false
-  ]);
+// if (function_exists('acf_add_options_page')) {
+//   acf_add_options_page([
+//     'page_title' => 'Website Settings',
+//     'menu_title' => 'Website Settings',
+//     'menu_slug'  => 'site-settings',
+//     'capability' => 'edit_posts',
+//     'redirect'   => false
+//   ]);
+// }
+function my_acf_options_page_init() {
+    // Check if function exists to avoid errors if ACF is not active
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Website Settings',
+            'menu_title' => 'Website Settings',
+            'menu_slug'  => 'site-settings',
+            'capability' => 'edit_posts',
+            'redirect'   => false,
+        ]);
+    }
 }
+add_action('acf/init', 'my_acf_options_page_init');
 /**
  * header menu
  */
@@ -480,7 +505,9 @@ add_action('init', function () {
     require get_template_directory() . '/patterns/why-choose-us.php'
   );
 });
-
+/**
+ * remove default padding in patterns
+ */
 function enqueue_pattern_padding_remover_script() {
     // Check if the script should be loaded only on specific pages/posts if needed
     // For now, it will load on all pages.

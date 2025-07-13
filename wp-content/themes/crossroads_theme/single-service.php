@@ -88,6 +88,49 @@
                                       <?php endif; ?>
                                 <?php endif; ?>
                             </section>
+                            <?php
+                            $faq_posts = get_field('services_faqs'); // Returns array of post objects (FAQ posts)
+                            if (!empty($faq_posts)) :
+                            ?>
+                            <section class="bg-light faq-list" style="background-size: cover; background-repeat: no-repeat;">
+                            <div class="container" style="background-size: cover; background-repeat: no-repeat;">
+                                <div class="row g-4" style="background-size: cover; background-repeat: no-repeat;">
+                                <div class="col-lg-5" style="background-size: cover; background-repeat: no-repeat;">
+                                    <div class="subtitle id-color wow fadeInUp animated" data-wow-delay=".0s" style="background-size: cover; background-repeat: no-repeat; visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
+                                    Everything You Need to Know
+                                    </div>
+                                    <h2 class="wow fadeInUp animated" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                    Frequently Asked Questions
+                                    </h2>
+                                </div>
+                                <div class="col-lg-7" style="background-size: cover; background-repeat: no-repeat;">
+                                    <div class="accordion s2 wow fadeInUp animated" style="background-size: cover; background-repeat: no-repeat; visibility: visible; animation-name: fadeInUp;">
+                                    <div class="accordion-section" style="background-size: cover; background-repeat: no-repeat;">
+                                        <?php
+                                        $i = 1;
+                                        foreach ($faq_posts as $faq) :
+                                        $faq_id = $faq->ID;
+                                        $faq_question = get_the_title($faq_id);
+                                        $faq_answer = get_the_content(null, false, $faq_id);
+                                        $accordion_id = 'accordion-f' . $i;
+                                        ?>
+                                        <div class="accordion-section-title" data-tab="#<?php echo esc_attr($accordion_id); ?>" style="background-size: cover; background-repeat: no-repeat;">
+                                            <?php echo $i . '. ' . esc_html($faq_question); ?>
+                                        </div>
+                                        <div class="accordion-section-content" id="<?php echo esc_attr($accordion_id); ?>" style="background-size: cover; background-repeat: no-repeat;">
+                                            <?php echo wp_kses_post($faq_answer); ?>
+                                        </div>
+                                        <?php
+                                        $i++;
+                                        endforeach;
+                                        ?>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </section>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
