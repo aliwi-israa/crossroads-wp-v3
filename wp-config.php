@@ -86,9 +86,6 @@ $table_prefix = 'wp_';
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
 // define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true ); // Will log errors to wp-content/debug.log
-define( 'WP_DEBUG_DISPLAY', true ); // Displays errors on screen (turn off on live site!)
-@ini_set( 'display_errors', 1 );
 /* Add any custom values between this line and the "stop editing" line. */
 
 
